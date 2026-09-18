@@ -70,7 +70,7 @@ async function calculate() {
     try {
 
         let response = await fetch(
-           "https://calculator-python-pq1x.onrender.com",
+           "https://calculator-python-pq1x.onrender.com/calculate",
             {
                 method: "POST",
 
@@ -359,7 +359,7 @@ async function clearHistory() {
     try {
 
         let response = await fetch(
-            "http://127.0.0.1:8000/history",
+            "http://"https://calculator-python-pq1x.onrender.com/calculate":8000/history",
             {
                 method: "DELETE"
             }
