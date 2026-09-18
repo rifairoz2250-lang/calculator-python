@@ -2,382 +2,204 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
+    <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>Pastel Calculator</title>
+    <title>Calculator</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
-    <div class="app-container">
+    <div class="calculator">
 
+        <!-- DISPLAY -->
 
-        <!-- Calculator Card -->
+        <input
+            type="text"
+            id="display"
+            value="0"
+            readonly
+        >
 
-        <div class="calculator-card">
 
+        <!-- MEMORY BUTTONS -->
 
-            <!-- Top Section -->
+        <div class="memory-buttons">
 
-            <div class="top-section">
+            <button onclick="memoryClear()">
+                MC
+            </button>
 
-                <div>
+            <button onclick="memoryRecall()">
+                MR
+            </button>
 
-                    <p class="small-title">
-                        SMART
-                    </p>
-
-                    <h1>
-                        Calculator
-                    </h1>
-
-                </div>
-
-
-                <button
-                    class="history-open"
-                    onclick="openHistory()">
-
-                    ☰
-
-                    History
-
-                </button>
-
-            </div>
-
-
-            <!-- Display -->
-
-            <div class="display-container">
-
-                <input
-                    type="text"
-                    id="display"
-                    value="0"
-                    readonly>
-
-            </div>
-
-
-            <!-- Memory Buttons -->
-
-            <div class="memory-buttons">
-
-                <button
-                    onclick="memoryClear()">
-
-                    MC
-
-                </button>
-
-
-                <button
-                    onclick="memoryRecall()">
-
-                    MR
-
-                </button>
-
-
-                <button
-                    onclick="memoryAdd()">
-
-                    M+
-
-                </button>
-
-            </div>
-
-
-            <!-- Calculator Buttons -->
-
-            <div class="buttons">
-
-
-                <button
-                    class="light-button"
-                    onclick="clearDisplay()">
-
-                    C
-
-                </button>
-
-
-                <button
-                    class="light-button"
-                    onclick="deleteNumber()">
-
-                    ⌫
-
-                </button>
-
-
-                <button
-                    class="light-button"
-                    onclick="chooseOperator('%')">
-
-                    %
-
-                </button>
-
-
-                <button
-                    class="operator-button"
-                    onclick="chooseOperator('/')">
-
-                    ÷
-
-                </button>
-
-
-                <!-- Row 2 -->
-
-                <button
-                    onclick="addNumber('7')">
-
-                    7
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('8')">
-
-                    8
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('9')">
-
-                    9
-
-                </button>
-
-
-                <button
-                    class="operator-button"
-                    onclick="chooseOperator('*')">
-
-                    ×
-
-                </button>
-
-
-                <!-- Row 3 -->
-
-                <button
-                    onclick="addNumber('4')">
-
-                    4
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('5')">
-
-                    5
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('6')">
-
-                    6
-
-                </button>
-
-
-                <button
-                    class="operator-button"
-                    onclick="chooseOperator('-')">
-
-                    −
-
-                </button>
-
-
-                <!-- Row 4 -->
-
-                <button
-                    onclick="addNumber('1')">
-
-                    1
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('2')">
-
-                    2
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('3')">
-
-                    3
-
-                </button>
-
-
-                <button
-                    class="operator-button"
-                    onclick="chooseOperator('+')">
-
-                    +
-
-                </button>
-
-
-                <!-- Row 5 -->
-
-                <button
-                    onclick="addNumber('(')">
-
-                    (
-
-                </button>
-
-
-                <button
-                    onclick="addNumber('0')">
-
-                    0
-
-                </button>
-
-
-                <button
-                    onclick="addNumber(')')">
-
-                    )
-
-                </button>
-
-
-                <button
-                    class="equals-button"
-                    onclick="calculate()">
-
-                    =
-
-                </button>
-
-
-            </div>
+            <button onclick="memoryAdd()">
+                M+
+            </button>
 
         </div>
 
 
-        <!-- History Panel -->
+        <!-- CALCULATOR BUTTONS -->
 
-        <div
-            id="historyPanel"
-            class="history-panel">
+        <div class="buttons">
 
+            <button onclick="clearDisplay()">
+                C
+            </button>
 
-            <!-- History Header -->
+            <button onclick="deleteNumber()">
+                ⌫
+            </button>
 
-            <div class="history-top">
+            <button onclick="chooseOperator('%')">
+                %
+            </button>
 
-                <div>
-
-                    <p class="small-title">
-                        YOUR
-                    </p>
-
-                    <h2>
-                        History
-                    </h2>
-
-                </div>
+            <button onclick="chooseOperator('/')">
+                ÷
+            </button>
 
 
-                <button
-                    class="close-icon"
-                    onclick="closeHistory()">
+            <button onclick="addNumber('7')">
+                7
+            </button>
 
-                    ×
+            <button onclick="addNumber('8')">
+                8
+            </button>
 
-                </button>
+            <button onclick="addNumber('9')">
+                9
+            </button>
 
-            </div>
-
-
-            <!-- History List -->
-
-            <div
-                id="history"
-                class="history-list">
-
-
-                <div class="empty-history">
-
-                    <div class="empty-icon">
-                        ⌁
-                    </div>
+            <button onclick="chooseOperator('*')">
+                ×
+            </button>
 
 
-                    <p>
-                        No calculations yet
-                    </p>
+            <button onclick="addNumber('4')">
+                4
+            </button>
+
+            <button onclick="addNumber('5')">
+                5
+            </button>
+
+            <button onclick="addNumber('6')">
+                6
+            </button>
+
+            <button onclick="chooseOperator('-')">
+                −
+            </button>
 
 
-                    <span>
-                        Your calculations will appear here.
-                    </span>
+            <button onclick="addNumber('1')">
+                1
+            </button>
 
-                </div>
+            <button onclick="addNumber('2')">
+                2
+            </button>
 
-            </div>
+            <button onclick="addNumber('3')">
+                3
+            </button>
 
-
-            <!-- History Actions -->
-
-            <div class="history-actions">
-
-
-                <button
-                    class="clear-history"
-                    onclick="clearHistory()">
-
-                    🗑 Clear History
-
-                </button>
+            <button onclick="chooseOperator('+')">
+                +
+            </button>
 
 
-                <button
-                    class="close-history"
-                    onclick="closeHistory()">
+            <button onclick="addNumber('0')"
+                class="zero">
+                0
+            </button>
 
-                    Close
+            <button onclick="addNumber('.')">
+                .
+            </button>
 
-                </button>
-
-            </div>
+            <button onclick="calculate()"
+                class="equals">
+                =
+            </button>
 
         </div>
+
+
+        <!-- HISTORY BUTTON -->
+
+        <button
+            class="history-button"
+            onclick="openHistory()">
+
+            History
+
+        </button>
 
     </div>
 
+
+    <!-- HISTORY PANEL -->
+
+    <div
+        id="historyPanel"
+        class="history-panel">
+
+        <div class="history-header">
+
+            <h2>History</h2>
+
+            <button onclick="closeHistory()">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="history"
+            class="history-list">
+
+            <div class="empty-history">
+
+                <div class="empty-icon">
+                    ⌁
+                </div>
+
+                <p>
+                    No calculations yet
+                </p>
+
+                <span>
+                    Your calculations will appear here.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="clear-history"
+            onclick="clearHistory()">
+
+            Clear History
+
+        </button>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
 
