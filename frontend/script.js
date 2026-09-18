@@ -56,21 +56,16 @@ async function calculate() {
         return;
     }
 
-
     let data = {
-
         num1: Number(firstNumber),
-
         num2: Number(secondNumber),
-
         operator: operator
     };
-
 
     try {
 
         let response = await fetch(
-           "https://calculator-python-pq1x.onrender.com/calculate",
+            "https://calculator-python-pq1x.onrender.com/calculate",
             {
                 method: "POST",
 
@@ -82,9 +77,7 @@ async function calculate() {
             }
         );
 
-
         let result = await response.json();
-
 
         if (result.error) {
 
@@ -93,9 +86,7 @@ async function calculate() {
             return;
         }
 
-
         display.value = result.result;
-
 
         firstNumber = result.result.toString();
 
@@ -103,15 +94,14 @@ async function calculate() {
 
         operator = "";
 
-
         loadHistory();
 
     }
     catch (error) {
 
-        display.value = "Backend Error";
-
         console.log(error);
+
+        display.value = "Backend Error";
     }
 }
 
@@ -140,19 +130,15 @@ function deleteNumber() {
 
     if (operator === "") {
 
-        firstNumber =
-            firstNumber.slice(0, -1);
+        firstNumber = firstNumber.slice(0, -1);
 
-        display.value =
-            firstNumber || "0";
+        display.value = firstNumber || "0";
 
     } else {
 
-        secondNumber =
-            secondNumber.slice(0, -1);
+        secondNumber = secondNumber.slice(0, -1);
 
-        display.value =
-            secondNumber || "0";
+        display.value = secondNumber || "0";
     }
 }
 
@@ -163,21 +149,13 @@ function deleteNumber() {
 
 function memoryAdd() {
 
-    let currentValue =
-        Number(display.value);
-
+    let currentValue = Number(display.value);
 
     if (isNaN(currentValue)) {
         return;
     }
 
-
     memory = memory + currentValue;
-
-    console.log(
-        "Memory:",
-        memory
-    );
 }
 
 
@@ -189,9 +167,7 @@ function memoryRecall() {
 
     display.value = memory;
 
-
-    firstNumber =
-        memory.toString();
+    firstNumber = memory.toString();
 
     secondNumber = "";
 
@@ -206,10 +182,6 @@ function memoryRecall() {
 function memoryClear() {
 
     memory = 0;
-
-    console.log(
-        "Memory cleared"
-    );
 }
 
 
@@ -222,19 +194,15 @@ async function loadHistory() {
     try {
 
         let response = await fetch(
-            "http://127.0.0.1:8000/history"
+            "https://calculator-python-pq1x.onrender.com/history"
         );
 
-
         let history = await response.json();
-
 
         let historyList =
             document.getElementById("history");
 
-
         historyList.innerHTML = "";
-
 
         if (history.length === 0) {
 
@@ -259,24 +227,19 @@ async function loadHistory() {
             return;
         }
 
-
         history.forEach(function(item) {
 
             let row =
                 document.createElement("div");
 
-
             row.className =
                 "history-item";
-
 
             let expression =
                 document.createElement("div");
 
-
             expression.className =
                 "history-expression";
-
 
             expression.textContent =
                 item.num1 +
@@ -285,32 +248,26 @@ async function loadHistory() {
                 " " +
                 item.num2;
 
-
             let result =
                 document.createElement("div");
-
 
             result.className =
                 "history-result";
 
-
             result.textContent =
                 "= " + item.result;
-
 
             row.appendChild(expression);
 
             row.appendChild(result);
 
-
             historyList.appendChild(row);
-
         });
 
     }
     catch (error) {
 
-        console.log(error);
+        console.log("History error:", error);
     }
 }
 
@@ -349,35 +306,29 @@ async function clearHistory() {
         "Are you sure you want to clear all history?"
     );
 
-
     if (!confirmClear) {
-
         return;
     }
-
 
     try {
 
         let response = await fetch(
-            "http://"https://calculator-python-pq1x.onrender.com/calculate":8000/history",
+            "https://calculator-python-pq1x.onrender.com/history",
             {
                 method: "DELETE"
             }
         );
 
-
         let result = await response.json();
 
-
         console.log(result.message);
-
 
         loadHistory();
 
     }
     catch (error) {
 
-        console.log(error);
+        console.log("Clear history error:", error);
     }
 }
 
@@ -392,7 +343,6 @@ document.addEventListener(
 
         const key = event.key;
 
-
         if (
             key >= "0" &&
             key <= "9"
@@ -400,7 +350,6 @@ document.addEventListener(
 
             addNumber(key);
         }
-
 
         else if (
             key === "+" ||
@@ -413,14 +362,12 @@ document.addEventListener(
             chooseOperator(key);
         }
 
-
         else if (
             key === "Enter"
         ) {
 
             calculate();
         }
-
 
         else if (
             key === "Backspace"
@@ -429,14 +376,12 @@ document.addEventListener(
             deleteNumber();
         }
 
-
         else if (
             key === "Escape"
         ) {
 
             clearDisplay();
         }
-
     }
 );
 
