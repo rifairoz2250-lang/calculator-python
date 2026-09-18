@@ -70,7 +70,7 @@ async function calculate() {
     try {
 
         let response = await fetch(
-            "http://127.0.0.1:8000/calculate",
+           "https://calculator-python-pq1x.onrender.com",
             {
                 method: "POST",
 
